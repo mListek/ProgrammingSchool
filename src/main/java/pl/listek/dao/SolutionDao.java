@@ -1,6 +1,7 @@
 package pl.listek.dao;
 
 import pl.listek.DbUtil;
+import pl.listek.model.Exercise;
 import pl.listek.model.Solution;
 import pl.listek.model.User;
 
@@ -18,6 +19,8 @@ public class SolutionDao {
             "DELETE FROM solutions WHERE solution_id = ?";
     private static final String FIND_ALL_SOLUTIONS_QUERY =
             "SELECT * FROM solutions";
+    private static final String FIND_ALL_BY_USER_ID =
+            "SELECT * FROM solutions WHERE user_id = ?";
 
     public Solution create(Solution solution) {
         try (Connection conn = DbUtil.getConnection()) {
@@ -107,6 +110,32 @@ public class SolutionDao {
                 solutions = addToArray(solution, solutions);
                 return solutions;
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private Exercise[] addExerciseToArray(Exercise e, Exercise[] exercises) {
+        Exercise[] tmpExercises = Arrays.copyOf(exercises, exercises.length + 1);
+        tmpExercises[exercises.length] = e;
+        return tmpExercises;
+    }
+
+    public Exercise[] findAllByUserId(int userId) {
+        try (Connection conn = DbUtil.getConnection()) {
+            Exercise[] exercises = new Exercise[0];
+            PreparedStatement preStm = conn.prepareStatement(FIND_ALL_BY_USER_ID);
+            preStm.setInt(1, userId);
+            ResultSet resultSet = preStm.executeQuery();
+            while (resultSet.next()) {
+                Exercise exercise = new Exercise();
+                exercise.setExercise_id(resultSet.getInt("exercise_id"));
+                exercise.setTitle(resultSet.getString("title"));
+                exercise.setDescription(resultSet.getString("description"));
+                exercises = addExerciseToArray(exercise, exercises);
+            }
+            return exercises;
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -89,8 +89,8 @@ public class GroupDao {
                 group.setGroup_id(resultSet.getInt("group_id"));
                 group.setName(resultSet.getString("name"));
                 groups = addToArray(group, groups);
-                return groups;
             }
+            return groups;
         } catch (SQLException e) {
             e.printStackTrace();
         }

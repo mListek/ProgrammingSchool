@@ -93,8 +93,8 @@ public class ExerciseDao {
                 exercise.setTitle(resultSet.getString("title"));
                 exercise.setDescription(resultSet.getString("description"));
                 exercises = addToArray(exercise, exercises);
-                return exercises;
             }
+            return exercises;
         } catch (SQLException e) {
             e.printStackTrace();
         }
