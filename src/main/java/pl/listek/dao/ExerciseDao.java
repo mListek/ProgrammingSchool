@@ -11,11 +11,11 @@ public class ExerciseDao {
     private static final String CREATE_EXERCISE_QUERY =
             "INSERT INTO exercises(title, description) VALUES (?, ?)";
     private static final String READ_EXERCISE_QUERY =
-            "SELECT * FROM exercises WHERE id = ?";
+            "SELECT * FROM exercises WHERE exercise_id = ?";
     private static final String UPDATE_EXERCISE_QUERY =
-            "UPDATE exercises SET title = ?, description = ? WHERE id = ?";
+            "UPDATE exercises SET title = ?, description = ? WHERE exercise_id = ?";
     private static final String DELETE_EXERCISE_QUERY =
-            "DELETE FROM exercises WHERE id = ?";
+            "DELETE FROM exercises WHERE exercise_id = ?";
     private static final String FIND_ALL_EXERCISES_QUERY =
             "SELECT * FROM exercises";
 
@@ -100,4 +100,4 @@ public class ExerciseDao {
         }
         return null;
     }
-}//UserDao
+}//ExerciseDao

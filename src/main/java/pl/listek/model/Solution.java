@@ -1,6 +1,7 @@
 package pl.listek.model;
 
-import java.util.Date;
+
+import java.sql.Date;
 
 public class Solution {
     private int solution_id;

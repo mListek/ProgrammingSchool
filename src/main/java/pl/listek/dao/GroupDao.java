@@ -11,11 +11,11 @@ public class GroupDao {
     private static final String CREATE_GROUP_QUERY =
             "INSERT INTO groups(name) VALUES (?)";
     private static final String READ_GROUP_QUERY =
-            "SELECT * FROM groups WHERE id = ?";
+            "SELECT * FROM groups WHERE group_id = ?";
     private static final String UPDATE_GROUP_QUERY =
-            "UPDATE groups SET name = ? WHERE id = ?";
+            "UPDATE groups SET name = ? WHERE group_id = ?";
     private static final String DELETE_GROUP_QUERY =
-            "DELETE FROM groups WHERE id = ?";
+            "DELETE FROM groups WHERE group_id = ?";
     private static final String FIND_ALL_GROUPS_QUERY =
             "SELECT * FROM groups";
 

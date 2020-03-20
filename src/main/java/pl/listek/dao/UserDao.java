@@ -10,11 +10,11 @@ public class UserDao {
     private static final String CREATE_USER_QUERY =
             "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
     private static final String READ_USER_QUERY =
-            "SELECT * FROM users WHERE id = ?";
+            "SELECT * FROM users WHERE user_id = ?";
     private static final String UPDATE_USER_QUERY =
-            "UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?";
+            "UPDATE users SET username = ?, email = ?, password = ? WHERE user_id = ?";
     private static final String DELETE_USER_QUERY =
-            "DELETE FROM users WHERE id = ?";
+            "DELETE FROM users WHERE user_id = ?";
     private static final String FIND_ALL_USERS_QUERY =
             "SELECT * FROM users";
 
@@ -91,7 +91,7 @@ public class UserDao {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 User user = new User();
-                user.setUser_id(resultSet.getInt("id"));
+                user.setUser_id(resultSet.getInt("user_id"));
                 user.setUserName(resultSet.getString("username"));
                 user.setEmail(resultSet.getString("email"));
                 user.setPassword(resultSet.getString("password"));
