@@ -1,6 +1,7 @@
-package pl.listek.model;
+package pl.listek.dao;
 
 import pl.listek.DbUtil;
+import pl.listek.model.User;
 
 import java.sql.*;
 import java.util.Arrays;
@@ -42,7 +43,7 @@ public class UserDao {
             ResultSet resultSet = preStm.executeQuery();
             if (resultSet.next()) {
                 User user = new User();
-                user.setUser_id(resultSet.getInt("id"));
+                user.setUser_id(resultSet.getInt("user_id"));
                 user.setUserName(resultSet.getString("username"));
                 user.setEmail(resultSet.getString("email"));
                 user.setPassword(resultSet.getString("password"));
