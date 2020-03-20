@@ -16,7 +16,7 @@ public class GroupDao {
             "UPDATE groups SET name = ? WHERE id = ?";
     private static final String DELETE_GROUP_QUERY =
             "DELETE FROM groups WHERE id = ?";
-    private static final String FIND_ALL_GROUP_QUERY =
+    private static final String FIND_ALL_GROUPS_QUERY =
             "SELECT * FROM groups";
 
     public Group create(Group group) {
@@ -82,7 +82,7 @@ public class GroupDao {
     public Group[] findAll() {
         try (Connection conn = DbUtil.getConnection()) {
             Group[] groups = new Group[0];
-            PreparedStatement statement = conn.prepareStatement(FIND_ALL_GROUP_QUERY);
+            PreparedStatement statement = conn.prepareStatement(FIND_ALL_GROUPS_QUERY);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Group group = new Group();
@@ -96,4 +96,4 @@ public class GroupDao {
         }
         return null;
     }
-}//UserDao
+}//GroupDao
