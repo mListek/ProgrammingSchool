@@ -21,6 +21,8 @@ public class SolutionDao {
             "SELECT * FROM solutions";
     private static final String FIND_ALL_BY_USER_ID =
             "SELECT * FROM solutions WHERE user_id = ?";
+    private static final String FIND_RECENT =
+            "SELECT * FROM solutions ORDER BY updated DESC LIMIT ?";
 
     public Solution create(Solution solution) {
         try (Connection conn = DbUtil.getConnection()) {
@@ -108,8 +110,8 @@ public class SolutionDao {
                 solution.setExercise_id(resultSet.getInt("exercise_id"));
                 solution.setUser_id(resultSet.getInt("user_id"));
                 solutions = addToArray(solution, solutions);
-                return solutions;
             }
+            return solutions;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -136,6 +138,29 @@ public class SolutionDao {
                 exercises = addExerciseToArray(exercise, exercises);
             }
             return exercises;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Solution[] findRecent(int nr) {
+        try (Connection conn = DbUtil.getConnection()) {
+            Solution[] solutions = new Solution[0];
+            PreparedStatement preStm = conn.prepareStatement(FIND_RECENT);
+            preStm.setInt(1, nr);
+            ResultSet resultSet = preStm.executeQuery();
+            while (resultSet.next()) {
+                Solution solution = new Solution();
+                solution.setSolution_id(resultSet.getInt("solution_id"));
+                solution.setCreated(resultSet.getDate("created"));
+                solution.setUpdated(resultSet.getDate("updated"));
+                solution.setDescription(resultSet.getString("description"));
+                solution.setExercise_id(resultSet.getInt("exercise_id"));
+                solution.setUser_id(resultSet.getInt("user_id"));
+                solutions = addToArray(solution, solutions);
+            }
+            return solutions;
         } catch (SQLException e) {
             e.printStackTrace();
         }
