@@ -26,7 +26,7 @@ public class UserDao {
             statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
             while (resultSet.next()) {
-                user.setId(resultSet.getInt(1));
+                user.setUser_id(resultSet.getInt(1));
             }
             return user;
         } catch (SQLException e) {
@@ -42,7 +42,7 @@ public class UserDao {
             ResultSet resultSet = preStm.executeQuery();
             if (resultSet.next()) {
                 User user = new User();
-                user.setId(resultSet.getInt("id"));
+                user.setUser_id(resultSet.getInt("id"));
                 user.setUserName(resultSet.getString("username"));
                 user.setEmail(resultSet.getString("email"));
                 user.setPassword(resultSet.getString("password"));
@@ -60,7 +60,7 @@ public class UserDao {
             preStm.setString(1, user.getUserName());
             preStm.setString(2, user.getEmail());
             preStm.setString(3, user.getPassword());
-            preStm.setInt(4, user.getId());
+            preStm.setInt(4, user.getUser_id());
             preStm.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -90,7 +90,7 @@ public class UserDao {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 User user = new User();
-                user.setId(resultSet.getInt("id"));
+                user.setUser_id(resultSet.getInt("id"));
                 user.setUserName(resultSet.getString("username"));
                 user.setEmail(resultSet.getString("email"));
                 user.setPassword(resultSet.getString("password"));
