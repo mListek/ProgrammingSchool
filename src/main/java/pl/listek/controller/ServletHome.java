@@ -21,6 +21,7 @@ public class ServletHome extends HttpServlet {
         int nr = Integer.parseInt(getServletContext().getInitParameter("number-solutions"));
         Solution[] solutions = solutionDao.findRecent(nr);
         request.setAttribute("solutions", solutions);
+        request.setAttribute("number", nr);
         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);;
     }
 }

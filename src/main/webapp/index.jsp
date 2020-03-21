@@ -14,13 +14,13 @@
 <body>
     <%@ include file="header.jsp" %>
     <p>
-        <h1>This is index.jsp</h1>
+        <h1>Lastest ${number} solutions added:</h1>
     </p>
     <table>
         <c:forEach items="${solutions}" var="solution">
             <tr>
-                <td>Solution: ${solution.description},</td><td> Created: ${solution.created},</td><td> Updated: ${solution.updated}</td>
-                <td><a href="http://localhost:8080/ProgrammingSchool_war_exploded/test?solution_id=${solution.solution_id}">Details</a></td>
+                <td>ID: ${solution.solution_id}</td> <td>|</td> <td>Solution: ${solution.description}</td> <td>|</td>
+                <td><a href="http://localhost:8080/ProgrammingSchool_war_exploded/solution?solution_id=${solution.solution_id}">Details</a></td>
             </tr>
         </c:forEach>
     </table>
