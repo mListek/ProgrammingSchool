@@ -19,7 +19,10 @@
     <table>
         <c:forEach items="${solutions}" var="solution">
             <tr>
-                <td>ID: ${solution.solution_id}</td> <td>|</td> <td>Solution: ${solution.description}</td> <td>|</td>
+                <td>ID: ${solution.solution_id}</td>
+                <td>|</td>
+                <td>Solution: ${solution.description}</td>
+                <td>|</td>
                 <td><a href="http://localhost:8080/ProgrammingSchool_war_exploded/solution?solution_id=${solution.solution_id}">Details</a></td>
             </tr>
         </c:forEach>

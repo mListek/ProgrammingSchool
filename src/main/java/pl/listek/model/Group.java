@@ -1,7 +1,7 @@
 package pl.listek.model;
 
 public class Group {
-    private int group_id    ;
+    private int group_id;
     private String name;
 
     public Group() {}

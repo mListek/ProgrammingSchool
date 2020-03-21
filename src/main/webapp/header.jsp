@@ -14,5 +14,6 @@
     <p>
         This is header
     </p>
+    <a href="http://localhost:8080/ProgrammingSchool_war_exploded/groups">Groups</a>
 </body>
 </html>
