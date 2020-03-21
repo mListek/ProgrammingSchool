@@ -18,6 +18,7 @@
         <c:forEach items="${groups}" var="group">
             <tr>
                 <td>Group ID: ${group.group_id}</td>
+                <td><a href="http://localhost:8080/group/users?group_id=${group.group_id}">Check list of users</a></td>
             </tr>
             <tr>
                 <td>Name: ${group.name}</td>
